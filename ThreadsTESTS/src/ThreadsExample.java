@@ -1,3 +1,4 @@
+
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ThreadsExample implements Runnable {
@@ -18,18 +19,19 @@ public class ThreadsExample implements Runnable {
      }
 
     @Override
-    public void run() { //mettre ici le coeur de l'utilisation des threads
-        while(counter<1000){
+    public void run() {
+        while(counter<5){
             incrementCounter();
         }
+    }
+    public static void createThread(int nbr) {
+    	
+    	
+        new Thread().start();
     }
 
     public static void main(String[] args) {
         ThreadsExample te = new ThreadsExample();
-        Thread thread1 = new Thread(te);
-        Thread thread2 = new Thread(te);
-
-        thread1.start();
-        thread2.start();
+        te.createThread(5);
     }
 }
