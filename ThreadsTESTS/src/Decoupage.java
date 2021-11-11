@@ -139,7 +139,7 @@ public class Decoupage {
 		              if( i[pos] == index ){
 		                  itr.remove();
 		                  pos++;
-		              }
+		              } 
 
 		              index++;
 		          }
