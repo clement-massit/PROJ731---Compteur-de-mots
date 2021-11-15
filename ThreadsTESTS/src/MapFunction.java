@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-public class MapForAFile {
+public class MapFunction {
 	
 	
 	public static Map<String, Integer> mapGenerator(String chaine) throws IOException {
@@ -40,8 +40,8 @@ public class MapForAFile {
 	
 	
 	public static void main(String[] arg)  throws java.io.IOException {
-		String file = "chaine hotel cameroune Hotel";
-		mapGenerator(file);
+		String chain = "chaine hotel cameroune Hotel";
+		mapGenerator(chain);
 	
 		
 	}
