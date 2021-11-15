@@ -1,4 +1,5 @@
 
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -9,15 +10,16 @@ import java.util.StringTokenizer;
 
 public class Decoupage {
 	   
-	public static void main(String[] args) throws InterruptedException, FileNotFoundException, IOException{  
-		
+	  
+	
+		public static List<List<String>> decoupage_texte(String path) throws FileNotFoundException, IOException{ 
 		String line;
 		StringTokenizer st;
 		String word;
 		Integer cpt = 0;
 		ArrayList<String> words = new ArrayList<String>();
-		
-		        try(BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\zied\\Desktop\\big.txt"))) { 
+		// path : C:\\Users\\zied\\Desktop\\big.txt
+		        try(BufferedReader br = new BufferedReader(new FileReader(path))) { 
 		            while ((line = br.readLine()) != null) {
 		                
 		                st = new StringTokenizer(line, " ,.;:_-+/*\\.;\n\"'{}()=><\t!?#");
@@ -33,21 +35,14 @@ public class Decoupage {
 		            System.out.println(words.size());
 		        }
 	      
-		      // Détermination du nombre de threads
-		      double nb_thread = Math.log(cpt);
-	      
-		      int nb_thread_int = (int) Math.round(nb_thread);
 		      
-		      System.out.println("nombre de threads à créer: " + Math.round(nb_thread));
-	     
+	  int   nb_thread_int = get_nb_thread(cpt);
 	      
 		      // Découpage du fichier texte en liste de textes à donner à chaque thread
 		      
-		          long nb_mots_par_thread = Math.round(cpt/nb_thread);
+		          long nb_mots_par_thread = Math.round(cpt/nb_thread_int);
 		          
 		          System.out.println("mots par thread: " + nb_mots_par_thread);
-		         
-		          
 		          
 		       // Création des intervales
 		          ArrayList<Integer> intervales = new ArrayList<>();
@@ -122,22 +117,31 @@ public class Decoupage {
 
 		          
 	      System.out.println(chaines);
+		return chaines;
 		        	 
 		          }
 		          
 		          
 		          
+public static int get_nb_thread(int cpt) {
+//Détermination du nombre de threads
+double nb_thread = Math.log(cpt);
+
+int nb_thread_int = (int) Math.round(nb_thread);
+
+System.out.println("nombre de threads à créer: " + Math.round(nb_thread));
+return nb_thread_int;
+	
+}
 		          
 		          
 		          
-		          
-		          
-		          
-		          
+public static void main(String[] args) throws InterruptedException, FileNotFoundException, IOException{      
 		       
+	decoupage_texte("C:\\Users\\zied\\Desktop\\big.txt");
    
 		   }
 
 
-	
+}
 
