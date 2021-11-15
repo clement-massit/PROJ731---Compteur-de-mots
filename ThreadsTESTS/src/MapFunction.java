@@ -1,12 +1,22 @@
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
+import java.util.stream.Collectors;
 
 public class MapFunction {
 	
 	
-	public static Map<String, Integer> mapGenerator(String chaine) throws IOException {
+	public static Map<String, Integer> mapGenerator(List liste) throws IOException {
+
+		String chaine = "";
+		for (String element : (List<String>) liste) {
+			chaine += element + " ";
+		}
+		
 		
         Map<String, Integer> map = new HashMap<>();
         String word;
@@ -39,12 +49,13 @@ public class MapFunction {
 	}
 	
 	
-	public static void main(String[] arg)  throws java.io.IOException {
-		String chain = "chaine hotel cameroune Hotel";
-		mapGenerator(chain);
+	/*public static void main(String[] arg)  throws java.io.IOException {
+		
+		String[] liste = {"changing", "all", "over", "the", "world"};
+		mapGenerator(liste);
 	
 		
-	}
+	}*/
 		
         
 	

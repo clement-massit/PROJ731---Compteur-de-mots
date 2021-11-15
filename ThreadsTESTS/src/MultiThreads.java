@@ -1,7 +1,11 @@
+import java.io.IOException;
+import java.util.List;
 
 public class MultiThreads implements Runnable {
-	Thread thread;
-	String txtfile = "test.txt";
+	private List<String> liste;	
+	
+	
+	
 	/*
 	 * trame : 
 	 * on prend le fichier de base on le slice en plusieurs partie selon le nombre de mot
@@ -10,55 +14,30 @@ public class MultiThreads implements Runnable {
 	 * puis partie reduce à travailler
 	 */
 	
+	
+	public MultiThreads(List<String> liste) {
+		super();
+		this.liste = liste;
+		
+		
+	}
+
 	@Override
 	public void run() {
 		
-		System.out.println("hello im fred");
-		//MapForAFile.mapgen(txtfile);
-	}
-	
-public void executeThreads (int nbr) {
-	/*
-	 * mettre les parties de textes dans la boucle for 
-	 */
-	for (int i = 0; i < nbr; i++) {
-		(new Thread(new MultiThreads())).start();
+		try {
+			MapFunction.mapGenerator(liste);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-	}
-		
-		
-	}
-	
-		
-	public void get_result() {
-		
-	}
-	
-	/*
-	 * pour récuperer le résultas du thread faire appel à une fonction
-	 * 
-	 */
-	
-	
-	
 
-	public static void main(String[] args) {
-		/*
-		 * ici on va créer plusieurs thread pour executer le map 
-		 * 
-		 * voir si on change le type de l'entrée en mode liste plutot que fichier
-		 */
-		
-		MultiThreads m = new MultiThreads();
-		m.executeThreads(7);
-		
-		
-		
-		
-	}	
+	}
 	
-
 	
+	
+		
 	
 		
 
