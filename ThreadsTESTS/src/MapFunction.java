@@ -43,6 +43,7 @@ public class MapFunction {
     		
 	    }	
     	System.out.println(map);
+    	
     	return map;
             
 	    	

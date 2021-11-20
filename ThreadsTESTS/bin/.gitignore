@@ -1,5 +1,10 @@
-/ExecuteThreads.class
-/Slice.class
+/.metadata/
 /Decoupage.class
 /MapFunction.class
-/.metadata/
+/MultiThreads.class
+/Reducing.class
+/MapReduce.class
+/Slice.class
+/Task.class
+/MappingTask.class
+/ReduceTask.class
