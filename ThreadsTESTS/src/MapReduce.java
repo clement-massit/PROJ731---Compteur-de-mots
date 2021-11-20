@@ -1,6 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,8 +19,9 @@ public class MapReduce {
 		
 		ArrayList<Map<String, Integer>> mappedTxtList = new ArrayList<>(); // liste des textes mappés
 		
+		Map<String, Integer> results = new HashMap<String, Integer>();
 		
-		
+		// EXECUTION DU MAPPAGE
 		
 		for(List<String> texte : slicedTxt) {
 			
@@ -33,59 +35,26 @@ public class MapReduce {
 		
 		}
 		
-		System.out.println(mappedTxtList);
+		System.out.println(mappedTxtList); // On a bien stocké les données de notre mapping dans une liste qu'on pourra utiliser dans notre Reduce
 		
 		
+	//	System.out.println("nb de mots : " + Slice.nbWords(path));
+		//System.out.println("nb de threads : " + Slice.nbThreads(Slice.nbWords(path)));
 		
+//		System.out.println("découpage du texte : " + Slice.sliceTxt(path));
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	//	System.out.println("nb de mots : " + Slice.nbWords("test.txt"));
-		//System.out.println("nb de threads : " + Slice.nbThreads(Slice.nbWords("test.txt")));
-		
-//		System.out.println("découpage du texte : " + Slice.sliceTxt("test.txt"));
-		
-	/*
-	  		Slice.executeThreads(Slice.nbThreads(Slice.nbWords("test.txt")));
-	
 
-			
-			List<List<String>> whole_list = Slice.sliceTxt("test.txt");
-			ArrayList<Map<String, Integer>> listeResults = new ArrayList<>();
-			
-			
-			for (List<String> liste : whole_list) {
-				
-				(new Thread(new MultiThreads(liste, listeResults))).start();
-				
-			}
+		// EXECUTION DU REDUCE
 		
- */
+		for(Map<String, Integer> map : mappedTxtList) {
+			
+			map.forEach((k, v) -> results.merge(k, v, Integer::sum));
+	
+		}
+		
+		System.out.println(results);
+		
+		
 		
 		
 	}
