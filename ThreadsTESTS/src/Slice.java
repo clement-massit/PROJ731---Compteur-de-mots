@@ -1,26 +1,30 @@
-
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.StringTokenizer;
 
 public class Slice {
-	   
+	   /*
+	    Classe qui gère le traitement du fichier .txt, on retrouve le découpage du texte, le calcul du nombre de mots dans le texte
+	 et le calcul du nombre de threads
+	    */
 	  
 	
 		public static List<List<String>> sliceTxt(String path) throws FileNotFoundException, IOException{ 
+			/*
+			 * Pour découper le texte, transformer un fichier .txt en liste de chaines de caractères
+			 */
+			
 		String line;
 		StringTokenizer st;
 		String word;
 		Integer cpt = 0;
 		ArrayList<String> words = new ArrayList<String>();
-		// path : C:\\Users\\zied\\Desktop\\big.txt
+		
+		// On lit le fichier texte ligne par ligne
 		        try(BufferedReader br = new BufferedReader(new FileReader(path))) { 
 		            while ((line = br.readLine()) != null) {
 		                
@@ -29,11 +33,12 @@ public class Slice {
 		                while (st.hasMoreTokens()) {
 		                    word = st.nextToken();
 		                    words.add(word);
-		                    cpt++; 
+		                    cpt++; // nb de mots
 		                }    
 		            }
 
 		        }
+		        
 		        int   nb_thread_int = nbThreads(cpt);
 	      
 		      // Découpage du fichier texte en liste de textes à donner à chaque thread
@@ -58,13 +63,13 @@ public class Slice {
 		        	  a = i;
 		        	  
 		          }
+		         
+		          /*
+		         System.out.println("intervales: " + intervales);
+		         System.out.println("taille intervales: " + intervales.size());
+		         */
 		          
-		         /* System.out.println("intervales: " + intervales);
-		          System.out.println("taille intervales: " + intervales.size());
-		          System.out.println("dernier élément liste: " + intervales.get(intervales.size()-1));
-		          */
-		          // Création des chaines de caractères (parties de textes que chaque thread va traiter)
-		          
+		    
 		          List<List<String>> chaines = new ArrayList<List<String>>(); // Liste principale, contenant les sous-listes 'chaine'
 		          
 		          List<String> clef_suppression = new ArrayList<>();
@@ -132,32 +137,23 @@ public class Slice {
 		}
 		          
 		          
-		          
+		        
 		public static int nbThreads(int cpt) {
-			//Détermination du nombre de threads
-			double nb_thread = Math.log(cpt);
 			
+			  /* On applique un logarithme afin de trouver un nombre cohérents de threads à créer (le logarithme est pratique, si 
+			par exemple on a 100 mots, on a juste à créer 2 threads
+			*/
+		
+			double nb_thread = Math.log(cpt);
 			int nb_thread_int = (int) Math.round(nb_thread);
 			
-			//System.out.println("nombre de threads à créer: " + Math.round(nb_thread));
 			return nb_thread_int;
 	
 		}
 		
 		
 					
-			
-			
-		
-		
-		
-		          
-		          
-
-
-
-
-		
+	
 
 
 }
