@@ -1,10 +1,4 @@
-/.metadata/
-/Decoupage.class
 /MapFunction.class
-/MultiThreads.class
-/Reducing.class
 /MapReduce.class
-/Slice.class
-/Task.class
 /MappingTask.class
-/ReduceTask.class
+/Slice.class

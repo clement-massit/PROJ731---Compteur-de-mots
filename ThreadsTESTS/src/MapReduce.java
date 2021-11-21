@@ -9,8 +9,8 @@ public class MapReduce {
 
 	public static void main(String[] args) throws InterruptedException, FileNotFoundException, IOException{ 
 
-		String currentThreadName = Thread.currentThread().getName();
-		System.out.println("THREAD " + currentThreadName + " COMMENCE");
+		
+
 		String path = "C:\\Users\\zied\\Desktop\\big.txt";
 		List<List<String>> slicedTxt = Slice.sliceTxt(path); // le texte découpée en sous-listes
 		ArrayList<Map<String, Integer>> mappedTxtList = new ArrayList<>(); // liste des textes mappés
@@ -20,7 +20,7 @@ public class MapReduce {
 
 		for(List<String> texte : slicedTxt) {
 
-			MappingTask tache = new MappingTask(texte, 1000);
+			MappingTask tache = new MappingTask(texte);
 			Thread thread = new Thread(tache, "thread");
 			thread.start();
 

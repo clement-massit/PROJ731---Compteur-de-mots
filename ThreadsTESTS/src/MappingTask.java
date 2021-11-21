@@ -3,27 +3,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class MappingTask implements Runnable{
+	/*
+	 Pour retourner le résultat des tâches (tasks).
+	 task : contient les instructions et les retours.
+	 thread : un constructeur qui dirige le set d'instructions indépendamment.
+	 */
 
 	List<String> texte = new ArrayList<>();
-	private long sleepTime;
 	Map<String, Integer> mappedTxt = new HashMap<>();
 
-	private static int count = 0;
-	private int instanceNumber;
-	private String taskId;
-
-	private volatile boolean done = false;
+	// Ce booléen va être vu et modifié par plusieurs threads, cela explique le caractère volatile de la variable
+	private volatile boolean done = false; 
 
 
-	public MappingTask(List<String> texte, long sleepTime) {
+	public MappingTask(List<String> texte) {
 
 		this.texte = texte;
-		this.sleepTime = sleepTime;
-		this.instanceNumber = ++count;
-		this.taskId = "Task-" + instanceNumber;
 
 
 
@@ -34,35 +31,22 @@ public class MappingTask implements Runnable{
 	@Override
 	public void run() {
 
-		String currentThreadName = Thread.currentThread().getName();
-
-		System.out.println("THREAD " + currentThreadName + taskId + " COMMENCE");
-
-		System.out.println("THREAD " + currentThreadName + taskId + " DORT PENDANT : " + sleepTime + " millis");
+		System.out.println("début thread");
 
 
-		try {
-			TimeUnit.MILLISECONDS.sleep(sleepTime);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
-
-		// opération
 		try {
 			mappedTxt = MapFunction.mapGenerator(texte);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 
-		System.out.println("THREAD " + currentThreadName + taskId + " TERMINE");
+		System.out.println("fin thread");
 
-		done = true;
+		done = true; // ce qui atteste que le thread est terminé
 
 		synchronized(this) {
-			System.out.println(currentThreadName + " NOTIFYING");
+			// quand le thread est fini, on réveille le thread en attente (**)
 			this.notifyAll();
 		}
 
@@ -71,18 +55,21 @@ public class MappingTask implements Runnable{
 
 	public  Map<String, Integer> getMappedText() {
 
-
+		/* pour savoir si notre thread a fini de s'éxecuter avant de renvoyer le résultat,
+		si le thread a fini on return le résultat, sinon on attend qu'il finisse.
+		*/
 		if (!done) {
-			synchronized(this){
+			// Pour protéger l'accès à notre objet Task on applique un synchronize sur les blocs wait et notify  
+			synchronized(this){ 
 				try {
-					System.out.println(Thread.currentThread().getName() + " WAITING FOR RESULTS");
+					 // le thread attend
 					this.wait();
 
 				} catch (InterruptedException e){
 					e.printStackTrace();
 				}
 			}
-			System.out.println(Thread.currentThread().getName() + "WOKEN UP");
+// (**) thread se réveille ici 
 		}
 		return mappedTxt;	
 	}
