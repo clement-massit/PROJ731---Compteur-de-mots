@@ -6,18 +6,26 @@ import java.util.StringTokenizer;
 
 public class MapFunction {
 	/*
-	 Algorithme de mappage pour compter le nombre de mots dans une liste de chaines de caracteres. On crée pour cela une map avec le mot associé
-	 à son occurence dans la liste de string
+	 * Algorithme de mappage pour compter le nombre de mots dans
+	 * une liste de chaines de caracteres. 
+	 * On crée pour cela une map avec le mot associé
+	 * à son occurence dans la liste de string
 	 */
 
 
 	public static Map<String, Integer> mapGenerator(List<String> liste) throws IOException {
+		/*
+		 * fonction Map :
+		 * paramètre : List<String> liste, liste d'une chaine de caractère 
+		 * 
+		 * return : Map<String, Integer> , une map dont la clé est un String, et la valeur
+		 * est un entier
+		 */
 
 		String chaine = "";
 		for (String element : (List<String>) liste) {
 			chaine += element + " ";
 		}
-
 
 		Map<String, Integer> map = new HashMap<>();
 		String word;
@@ -27,27 +35,19 @@ public class MapFunction {
 
 		while(tokenizer.hasMoreTokens()) {
 			word = tokenizer.nextToken();
-
+			
 			if (map.containsKey(word.toLowerCase())) {
 				nbc = (map.get(word.toLowerCase())).intValue();
 				word = word.toLowerCase();
-
 				map.put(word, nbc + 1);
-
 			}
 
 			else {
 				nbc = 1;
-
 				map.put(word.toLowerCase(), nbc);
 			}
-
 		}	
-		System.out.println(map);
-
 		return map;
-
-
 	}
 
 
