@@ -1,1 +1,0 @@
-{requin=1, poule=1, vipa¨re=1, cigarette=1, renard=1, a©lephant=1, canard=1, vache=2, elephant=1, lapin=1}
