@@ -31,7 +31,7 @@ public class MappingTask implements Runnable{
 	@Override
 	public void run() {
 
-		System.out.println("début thread");
+		//System.out.println("début thread");
 
 
 		try {
@@ -41,7 +41,7 @@ public class MappingTask implements Runnable{
 		}
 
 
-		System.out.println("fin thread");
+		//System.out.println("fin thread");
 
 		done = true; // ce qui atteste que le thread est terminé
 
