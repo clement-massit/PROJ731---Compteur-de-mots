@@ -10,8 +10,7 @@ import java.util.Map;
 
 
 public class MapReduce {
-	final static String outputFilePath 
-	= "results.txt";
+	final static String outputFilePath = "results.txt";
 	// new file object
 	static File file = new File(outputFilePath);
 
