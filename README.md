@@ -1,6 +1,9 @@
 [![forthebadge](https://forthebadge.com/images/badges/made-with-java.svg)](https://forthebadge.com)
 
 # PROJ731---Compteur-de-mots  
+## Made with  
+* [Java](https://www.java.com/fr)  
+* [Eclipse - Java IDE](https://www.eclipse.org)  
 
 ## Description du projet  
 L'objectif du projet est de compter les différentes occurences des mots présents dans un fichier texte. La map sera stockée dans un fichier texte pour une meilleure visualisation.
