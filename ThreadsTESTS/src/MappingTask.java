@@ -19,14 +19,8 @@ public class MappingTask implements Runnable{
 
 
 	public MappingTask(List<String> texte) {
-
 		this.texte = texte;
-
-
-
 	}
-
-
 
 	@Override
 	public void run() {
