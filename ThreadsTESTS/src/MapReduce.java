@@ -1,15 +1,23 @@
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 public class MapReduce {
+	final static String outputFilePath 
+	= "results.txt";
+	// new file object
+	static File file = new File(outputFilePath);
+
+	static BufferedWriter bf = null;
 
 	public static void main(String[] args) throws InterruptedException, FileNotFoundException, IOException{ 
-
-		
 
 		String path = "big.txt";
 		List<List<String>> slicedTxt = Slice.sliceTxt(path); // le texte découpée en sous-listes
@@ -43,9 +51,18 @@ public class MapReduce {
 
 		System.out.println(results);
 
-
+		// Ecriture du résultat dans un fichier texte
+		bf = new BufferedWriter(new FileWriter(file));
+		bf.write(results.toString());
+		bf.flush();
+		bf.close();
 
 
 	}
-
 }
+
+
+
+
+
+

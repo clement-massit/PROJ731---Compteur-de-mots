@@ -138,13 +138,13 @@ public class Slice {
 		          
 		          
 		        
-		public static int nbThreads(int cpt) {
+		public static int nbThreads(int nbWord) {
 			
 			  /* On applique un logarithme afin de trouver un nombre cohérents de threads à créer (le logarithme est pratique, si 
 			par exemple on a 100 mots, on a juste à créer 2 threads
 			*/
 		
-			double nb_thread = Math.log(cpt);
+			double nb_thread = Math.log(nbWord);
 			int nb_thread_int = (int) Math.round(nb_thread);
 			
 			return nb_thread_int;
