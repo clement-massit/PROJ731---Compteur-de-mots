@@ -30,7 +30,7 @@ public class MapFunction {
 		Map<String, Integer> map = new HashMap<>();
 		String word;
 		int nbc;
-		StringTokenizer tokenizer = new StringTokenizer(chaine, " ,.;:_-+/*\\.;\n\"'{}()=><\t!?#");
+		StringTokenizer tokenizer = new StringTokenizer(chaine, " ,.;:_-+/*\\.;\n\"'{}()=><\t!?#][");
 
 
 		while(tokenizer.hasMoreTokens()) {
