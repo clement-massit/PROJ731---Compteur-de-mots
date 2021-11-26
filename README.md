@@ -1,7 +1,10 @@
+[![forthebadge](https://forthebadge.com/images/badges/made-with-java.svg)](https://forthebadge.com)
+
 # PROJ731---Compteur-de-mots  
 
 ## Description du projet  
-L'objectif du projet est de compter les différentes occurences des mots présents dans un fichier texte. 
+L'objectif du projet est de compter les différentes occurences des mots présents dans un fichier texte. La map sera stockée dans un fichier texte pour une meilleure visualisation.
+
 
 
 ## Grandes étapes du projet  
