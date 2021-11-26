@@ -13,6 +13,4 @@ L'objectif du projet est de compter les différentes occurences des mots présen
 * Il faut ensuite additionner chaque partie afin d'avoir les occurences totales (phase de reduce) et écrire le résultat dans un fichier texte.
 
 
-### Détermination du nombre de threads  
-Pour déterminer le nombre de thread que l'on va créer, nous allons prendre le nombre total de mots présents dans notre fichier texte de base. On applique le logarithme au nombre de mot et on arrondit la valeure. Ainsi par exemple pour 100 mots on utilise deux threads.
 
