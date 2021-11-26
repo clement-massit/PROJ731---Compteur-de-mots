@@ -25,7 +25,7 @@ public class MappingTask implements Runnable{
 	@Override
 	public void run() {
 
-		//System.out.println("début thread");
+		System.out.println("début thread");
 
 
 		try {
@@ -35,7 +35,7 @@ public class MappingTask implements Runnable{
 		}
 
 
-		//System.out.println("fin thread");
+		System.out.println("fin thread");
 
 		done = true; // ce qui atteste que le thread est terminé
 
@@ -52,7 +52,7 @@ public class MappingTask implements Runnable{
 		/* pour savoir si notre thread a fini de s'éxecuter avant de renvoyer le résultat,
 		si le thread a fini on return le résultat, sinon on attend qu'il finisse.
 		*/
-		if (!done) {
+		while (!done) {
 			// Pour protéger l'accès à notre objet Task on applique un synchronize sur les blocs wait et notify  
 			synchronized(this){ 
 				try {
