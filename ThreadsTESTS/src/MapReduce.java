@@ -11,7 +11,7 @@ public class MapReduce {
 
 		
 
-		String path = "C:\\Users\\zied\\Desktop\\big.txt";
+		String path = "big.txt";
 		List<List<String>> slicedTxt = Slice.sliceTxt(path); // le texte découpée en sous-listes
 		ArrayList<Map<String, Integer>> mappedTxtList = new ArrayList<>(); // liste des textes mappés
 		Map<String, Integer> results = new HashMap<String, Integer>();
