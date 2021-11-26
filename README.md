@@ -7,4 +7,4 @@ L'objectif du projet est d'établir pour un fichier texte donné, une map conten
 ## Grandes lignes du projet  
 1. Lecture du fichier texte  
 2. On regarde la taille du fichier (le nombre de mots du fichier), selon le nombre de mot on en déduit le nombre de threads à exécuter
-3. 
+3. Ensuite chaque thread va avoir une partie du texte à traiter
